@@ -4,9 +4,10 @@
 <head>
     <title>Controle Financeiro</title>
     <meta charset="UTF-8">
-    <meta nome="viewport" content="widht-device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -22,48 +23,53 @@
                 </div>
                 <h1 class="titulo-1">Controle Financeiro</h1>
             </div>
-            
+
             <div class="menu-desktop">
                 <!--href="itens 1, se referem aos itens da class container menu principal"-->
                 <nav class="container-menu-principal">
-                    <a href="#">Limpar dados</a>
+                    <a href="#" onclick="limparDados()">Limpar dados</a>
                     <span>|</span>
                     <a href="#">Cadastro de transações</a>
                     <span>|</span>
-                    <a href="#">Salvar no servidor</a>
+                    <a href="javascript:void(0);" onclick="salvarDados()">Salvar no servidor</a>
                 </nav>
             </div>
             <!--href menu-tablet-->
-            <div class="modulo" id="menu-tablet">
-                <div class="hamburguer-aberto">
+            <div class="modulo" id="menu">
+                <div class="hamburguer-aberto" onclick="abrirMenu()">
 
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z"
-                        fill="#333333" />
-                </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="#333333" />
+                    </svg>
 
-            </div>
-                <div class="navegação-menu-tablet">
-                    <div class="fechar-botao" id="hamburguer-fechado">x</div>
-                    <a href="#">Limpar dados</a>
-                    <a href="#">Cadastro de transações</a>
-                    <a href="#">Salvar no servidor</a>
                 </div>
             </div>
+
+            <div class="navegação-menu-tablet" id="menu-tablet">
+                <li class="texto_mobile">
+                    <a href="javascript:void(0)" class="fechar-botao" id="hamburguer-fechado"
+                        onclick="fecharMenu()">x</a>
+                    <a href="#" onclick="limparDados()">Limpar dados</a>
+                    <a href="#">Cadastro de transações</a>
+                    <a href="#">Salvar no servidor</a>
+                </li>
+            </div>
+
 
         </header>
     </div>
     <section id="conteudo">
 
-        <!--Formulário-->
+        <!---------------------------------------------------Formulário------------------------------------------------------>
         <div id="container">
             <h2 class="titulo-formulario">Nova transação</h2>
-            <form>
-                <div class="formulario-input">
+            <form onsubmit="return validar()" id="fomulario">
+                <div class="formulario-input" id="formulario-input">
                     <div class="ttr" id="ttr-1">
                         <label class="transação">Tipo de transação</label>
 
-                        <select class="selecione" id="selecione" required>
+                        <select class="selecione" onclick="cor_tipo_transação()" name="selecione" id="selecione">
                             <option value="0">-selecione-</option>
                             <option value="1" id="compra">compra</option>
                             <option value="2" id="venda">venda</option>
@@ -72,61 +78,39 @@
                     </div>
 
 
-                    <div class="ttr" id="ttr-2">
+                    <div class="ttr" id="ttr-2" onkeyup="campo_mercadoria()">
                         <label class="mercadoria">Nome da mercadoria</label>
 
-                        <input type="text" id="id-mercadoria" placeholder="Input" required>
+                        <input type="text" id="id-mercadoria" name="mercadoria" placeholder="Input">
 
                     </div>
-                    <div class="ttr" id="ttr-3">
+                    <div class="ttr" id="ttr-3" onkeyup="campo_valor()">
                         <label class="valor">Valor</label>
 
-                        <input type="number" id="id-valor" placeholder="R$0,00" required>
+                        <input type="text" class="valor" onkeyup="mascara_valor()" id="id-valor" name="valor"
+                            placeholder="R$0,00">
                     </div>
                 </div>
-                <div class="ttr-botao">
-                    <button class="botao" type="submit">Adicionar transação</button>
+                <div class="ttr-botao" id="botao">
+                    <button class="botao" id="botao" onclick="somar()" type="submit">Adicionar transação</button>
                 </div>
             </form>
         </div>
-        <!--Tabela-->
+        <!------------------------------------------------------------------------------------------------------------------------->
 
 
-        <div class="extrato">
-            <h2>Extrato de transações</h2>
-            <div class="descricao">
-                <h3>Mercadoria</h3>
-                <h3>Valor</h3>
-            </div>
-            <div class="line">
-                <div class="transacao">
-                    <span class="sinal">+</span>
-                    <span>Lorem ipsum dolor sit amet <br>consectetur</span>
-                </div>
-                <span>R$ 12.999,99</span>
-            </div>
-            <div class="line">
-                <div class="transacao">
-                    <span class="sinal">-</span>
-                    <span>Quis nostrud exercitation</span>
-                </div>
-                <span>R$ 99,99</span>
-            </div>
-            <div class="line">
-                <div class="transacao">
-                    <span class="sinal">+</span>
-                    <span>Lorem ipsum</span>
-                </div>
-                <span>9,99</span>
-            </div>
-            <div class="resumo-transacoes">
-                <h3>Total</h3>
-                <div class="resultado">
-                    <h3>R$ 12.909,99</h3>
-                    <span>[LUCRO]</span>
-                </div>
-            </div>
+        <!-----------------------------------------------Tabela do Extrato--------------------------------------------------------->
+
+
+        <div class="extrato" id="extrato_titulo">
+            <h2 class="extrato-transações" id="extrato_transações">Extrato de transações</h2>
+            <p class="sem-transações" id="sem_transações">Não há transações cadastradas</p>
         </div>
+        <div class="extrato" id="extrato">
+
+        </div>
+
+
     </section>
 </body>
 

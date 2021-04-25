@@ -12,7 +12,6 @@
     --black: #000;
     --border: #979797; 
 }
-
 /*Header*/
 #logo-principal-cabeçalho {
     width: 100%;
@@ -30,6 +29,7 @@ header {
 .logo-titulo {
     display: flex;
     align-items: center;
+    margin-left: 15px;
 }
 .titulo-1 {
     display: flex;
@@ -82,6 +82,7 @@ nav a:hover {
     flex-flow: column wrap;
     justify-content: space-around;
     width: 40%;
+    height: max-content;
     border: 1px solid var(--border);
     border-radius: 4px;
     margin-top: 15px;
@@ -176,13 +177,26 @@ label {
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
-    justify-content: center;
+    margin-top: 8%;
+    top: -20px;
 }
-.extrato .descricao {
+#extrato_titulo {
+    
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    margin-top: 8%;
+    top: -20px;
+    
+}
+
+.extrato .descricao  {
     display: flex;
     justify-content: space-between;
-    padding-left: 25px;
-    padding-bottom: 5px;
+    padding-left: 20px;
+    align-items: center;
+    padding-bottom: 0px;
     border-bottom: 1px solid var(--gray);
 }
 .extrato .line {
@@ -203,7 +217,7 @@ label {
     max-width: 65%;
 }
 .extrato .resumo-transacoes {
-    display: flex;
+    
     justify-content: space-between;
     padding-left: 25px;
     padding-top: 10px;
@@ -214,59 +228,99 @@ label {
     text-align: right;
 }
 H2 {
-    font-family: Lato;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
+    
     text-align: center;
     color: #000000;
     margin-top: -30px;
 }
 h3 {
-    font-family: Lato;
+    
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 22px;
     /* identical to box height, or 157% */
     color: #000000;
-    margin-top: 20px;
+    
 }
 span {
-    font-family: Lato;
+    
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
     /* or 114% */
     color: #000000;
+    
 }
 
+.extrato-transações {
+    text-align: center;
+    font-size: 1.125em;
+    font-weight: 700;
+    line-height: 1.375em;
+    color: var(--black);
+    position: relative;
+    top: inherit;
+    
+}
+.sem-transações {
+    text-align: center;
+    padding-top: -100px;
+    bottom: -10%;
+    margin-top: initial;
+}
+p {
+    text-align: right;
+    margin-top: -20px;
+}
+
+    
+
+
+
 /*Media care do tablet portrait*/
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     header {
         width: 90%;
+        
     }
     .menu-desktop {
         display: none;
     }
     #menu-tablet {
-        width: 35%;
-        height: 100%;
-        background-color: var(--gray);
-        position: fixed;
-        right: 0;
-        top: 0;
-        z-index: 10;
+     height: 100%;
+     width: 300px;
+     position: fixed;
+     z-index: 1;
+     top: 0;
+     right: 0;
+     background-color: #333333;
+     overflow-x: hidden;
+     transition: 0.5s;
+     margin-right: -300px;
+     
+        
     }
-    
     .navegação-menu-tablet {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        
+    }
+    .texto_mobile {
+        
         display: flex;
         flex-direction: column;
         width: 100%;
         margin-top: 50px;
     }
+
     div a, 
     #hamburguer-fechado {
      color: var(--white);
@@ -274,25 +328,20 @@ span {
      font-size: 1rem;
     }
     div a {
-        width: 100%;
+        padding: 8px 8px 8px 32px;
         text-align: right;
     }
     #hamburguer-fechado {
         font-weight: bold;
         position: absolute;
-        top: 15px;
-        left: 15px;
         font-size: 1.1em;
         cursor: pointer;
+        margin-top: -40px;
     }
     div a:hover {
         background-color: var(--light);
         color: var(--gray);
         cursor: pointer;
-    }
-    .navegação-menu-tablet a {
-        padding: 10px 20px 10px 0px;
-        transition: background-color 0.4s;
     }
     
     .logo-titulo{
@@ -369,7 +418,7 @@ span {
     }
 }
 /*Media care do mobile*/
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
 #container {
     display: flex;
     flex-flow: column wrap;
@@ -378,9 +427,19 @@ span {
     border: none;
     margin-top: 15px;
 }
-#menu-tablet {
+.logo-titulo{
+    width: 97%;
+ }
+.titulo-1 {
+    text-align: center;
+    margin:auto
+}
+
+
+.hamburguer-aberto {
+    display: initial;
+    cursor: pointer;
     width: 90%;
-    
 }
 .titulo-formulario{
     display: none;
@@ -430,9 +489,4 @@ form {
     border-left: none;
     border-radius: 0;
 }
-}
-@media screen and (max-width: 500px) {
-    #menu-tablet {
-        display: none;
-    }
 }
